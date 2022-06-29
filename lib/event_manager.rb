@@ -58,7 +58,7 @@ def reg_data_analysis(reg_hours, reg_days)
     hour_counter
   end
   
-  reg_days.map do |day|
+  reg_days = reg_days.map do |day|
     case day
     when 0
       day = "Sunday"

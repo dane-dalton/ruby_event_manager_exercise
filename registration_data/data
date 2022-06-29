@@ -73,27 +73,27 @@
     <th>Day of the Week</th><th>Registration Occurances</th>
       
       <tr>
-        <td>1</td>
+        <td>Monday</td>
         <td>7</td>
       </tr>
       
       <tr>
-        <td>0</td>
+        <td>Sunday</td>
         <td>1</td>
       </tr>
       
       <tr>
-        <td>6</td>
+        <td>Saturday</td>
         <td>2</td>
       </tr>
       
       <tr>
-        <td>2</td>
+        <td>Tuesday</td>
         <td>5</td>
       </tr>
       
       <tr>
-        <td>5</td>
+        <td>Friday</td>
         <td>4</td>
       </tr>
       
