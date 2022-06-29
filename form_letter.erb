@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You!</title>
+</head>
+<body>
+  <h1>Thanks <%= name %>!</h1>
+  <p>Thanks for coming to our conference.  We couldn't have done it without you!</p>
+
+  <p>
+    Political activism is at the heart of any democracy and your voice needs to be heard.
+    Please consider reaching out to your following representatives:
+  </p>
+
+  <table>
+    <% if legislators.kind_of?(Array) %>
+      <th>Name</th><th>Website</th>
+        <% legislators.each do |legislator| %>
+        <tr>
+          <td><%= "#{legislator.name}" %></td>
+          <td> <%= "#{legislator.urls.join}" unless legislator.urls.nil? %></td>
+        </tr>
+        <% end %>
+    <% else %>
+      <th></th>
+      <td><%= "#{legislators}" %></td>
+    <% end %>
+  </table>
+
+  <p>
+    If you would like more of our content, please consider signing up for our mobile alerts with your number: <%= phone_number %>
+  </p>
+</body>
+</html>
