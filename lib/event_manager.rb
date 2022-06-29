@@ -46,8 +46,53 @@ def save_thank_you_letter(id, form_letter)
   end
 end
 
-def save_registration_data(reg_hour, reg_day)
+def gather_registration_data(reg_date, reg_hours, reg_days)
+  reg_hours.push(reg_date[:hour])
+  reg_days.push(Date.new(reg_date[:year], reg_date[:mon], reg_date[:mday]).wday)
+end
+
+def reg_data_analysis(reg_hours, reg_days)
+  hour_analysis = reg_hours.reduce(Hash.new()) do |hour_counter, hour|
+    hour_counter[:"hour_#{hour}"] ||= 0
+    hour_counter[:"hour_#{hour}"] += 1
+    hour_counter
+  end
   
+  reg_days.map do |day|
+    case day
+    when 0
+      day = "Sunday"
+    when 1
+      day = "Monday"
+    when 2
+      day = "Tuesday"
+    when 3
+      day = "Wednesday"
+    when 4
+      day = "Thursday"
+    when 5
+      day = "Friday"
+    when 6
+      day = "Saturday"
+    end
+  end
+
+  day_analysis = reg_days.reduce(Hash.new()) do |day_counter, day|
+    day_counter[day] ||= 0
+    day_counter[day] += 1
+    day_counter
+  end
+  return [hour_analysis, day_analysis]
+end
+
+def save_registration_data(reg_data_template)
+  Dir.mkdir('registration_data') unless Dir.exists?('registration_data')
+
+  filename = "registration_data/data"
+
+  File.open(filename, "w") do 
+    |file| file.puts reg_data_template
+  end
 end
 
 puts 'Event Manager Initialized!'
@@ -59,21 +104,31 @@ contents = CSV.open(
 )
 
 template_letter = File.read('form_letter.erb')
-erb_template = ERB.new template_letter
+erb_letter_template = ERB.new template_letter
+
+reg_hours = []
+reg_days = []
 
 contents.each do |row|
   id = row[:id]
   name = row[:first_name]
   phone_number = clean_phone_number(row[:homephone])
-  reg_date = Date._strptime(row[:regdate], '%m/%d/%Y %H:%M')
-  reg_hour = reg_date[:hour]
-  reg_day = Date.new(reg_date[:year], reg_date[:mon], reg_date[:mday]).wday
-  save_registration_data(reg_hour, red_day)
 
   zipcode = clean_zipcode(row[:zipcode])
   legislators = legislators_by_zipcode(zipcode)
 
-  form_letter = erb_template.result(binding)
+  form_letter = erb_letter_template.result(binding)
   
   save_thank_you_letter(id, form_letter)
+
+  gather_registration_data(Date._strptime(row[:regdate], '%m/%d/%Y %H:%M'), reg_hours, reg_days)
 end
+
+template_data = File.read('registration_data.erb')
+erb_data_template = ERB.new template_data
+
+hour_analysis, day_analysis = reg_data_analysis(reg_hours, reg_days)
+
+reg_data_template = erb_data_template.result(binding)
+
+save_registration_data(reg_data_template)

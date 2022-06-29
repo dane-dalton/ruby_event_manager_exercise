@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Data</title>
+</head>
+<body>
+  <h1>Registration Hours</h1>
+  <table>
+    <th>Hour of the Day</th><th>Registration Occurances</th>
+      
+      <tr>
+        <td>hour_10</td>
+        <td>1</td>
+      </tr>
+      
+      <tr>
+        <td>hour_13</td>
+        <td>3</td>
+      </tr>
+      
+      <tr>
+        <td>hour_19</td>
+        <td>2</td>
+      </tr>
+      
+      <tr>
+        <td>hour_11</td>
+        <td>2</td>
+      </tr>
+      
+      <tr>
+        <td>hour_15</td>
+        <td>1</td>
+      </tr>
+      
+      <tr>
+        <td>hour_16</td>
+        <td>3</td>
+      </tr>
+      
+      <tr>
+        <td>hour_17</td>
+        <td>1</td>
+      </tr>
+      
+      <tr>
+        <td>hour_1</td>
+        <td>1</td>
+      </tr>
+      
+      <tr>
+        <td>hour_18</td>
+        <td>1</td>
+      </tr>
+      
+      <tr>
+        <td>hour_21</td>
+        <td>2</td>
+      </tr>
+      
+      <tr>
+        <td>hour_20</td>
+        <td>2</td>
+      </tr>
+      
+  </table>
+
+  <h1>Registration Days</h1>
+  <table>
+    <th>Day of the Week</th><th>Registration Occurances</th>
+      
+      <tr>
+        <td>1</td>
+        <td>7</td>
+      </tr>
+      
+      <tr>
+        <td>0</td>
+        <td>1</td>
+      </tr>
+      
+      <tr>
+        <td>6</td>
+        <td>2</td>
+      </tr>
+      
+      <tr>
+        <td>2</td>
+        <td>5</td>
+      </tr>
+      
+      <tr>
+        <td>5</td>
+        <td>4</td>
+      </tr>
+      
+  </table>
+</body>
+</html>

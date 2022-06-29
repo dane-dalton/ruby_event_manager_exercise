@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Data</title>
+</head>
+<body>
+  <h1>Registration Hours</h1>
+  <table>
+    <th>Hour of the Day</th><th>Registration Occurances</th>
+      <% hour_analysis.each do |key, value| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= value %></td>
+      </tr>
+      <% end %>
+  </table>
+
+  <h1>Registration Days</h1>
+  <table>
+    <th>Day of the Week</th><th>Registration Occurances</th>
+      <% day_analysis.each do |key, value| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= value %></td>
+      </tr>
+      <% end %>
+  </table>
+</body>
+</html>
